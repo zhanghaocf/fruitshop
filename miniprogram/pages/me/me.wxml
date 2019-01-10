@@ -1,2 +1,11 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class='top'>
+  <image class='headimg' src='/images/watermelon.jpg' mode='aspectFill'></image>
+  <view>小豪</view>
+  <view class='point'>当前积分：100</view>
+</view>
+<view class='flexwrap oplist firstline' hover-class='hoverclass' hover-start-time='50'>
+  <view class='left'>历史订单</view>
+  <view class='middle'>查看</view>
+  <view class='right'></view>
+</view>

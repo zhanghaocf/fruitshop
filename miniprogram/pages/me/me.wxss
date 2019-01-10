@@ -1,1 +1,42 @@
 /* pages/me/me.wxss */
+page{
+  font-size: 30rpx;
+}
+.top{
+  height:350rpx;
+  background-color: #8BC34A;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 30rpx;
+  color:white;
+  margin-bottom: 30rpx;
+}
+.headimg{
+  width:180rpx;
+  height:180rpx;
+  border-radius: 50%;
+  border:5rpx solid white;
+}
+.point{
+  font-size: 30rpx;
+  margin-top: 15rpx;
+}
+.firstline{
+  border-top:1rpx solid #8BC34A;
+}
+.oplist{
+  height:80rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #8BC34A;
+  box-sizing: border-box;
+  padding:0 20rpx;
+}
+.left{
+  flex-grow: 1;
+}
+.middle{
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color:#ccc;
+  flex-shrink: 0;
+}

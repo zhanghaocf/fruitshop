@@ -20,15 +20,13 @@
 .hoverclass{
   background-color: rgba(139,195,74,0.5);
 }
-.quan{
+.bordericon{
   width:20px;
   height:20px;
   border-radius: 50%;
   border:1px solid #8BC34A;
   box-sizing: border-box;
-  position:relative;
-  font-size: 0;
-  vertical-align: middle;
+  flex-shrink: 0;
 }
 .aligncenter{
   align-items: center;
@@ -41,8 +39,46 @@
 }
 .dblock{
   height:20px;
+  vertical-align: middle;
+}
+
+.carlist{
+  box-sizing: border-box;
+  padding:20rpx;
+  border:1rpx solid #8BC34A;
+  border-radius: 10rpx;
+  margin:20rpx 10rpx 0;
+}
+.carlistimg{
+  width:250rpx;
+  height:180rpx;
   display: block;
-  position:absolute;
-  top:0;
-  left:0;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.iteminfo{
+  width:100%;
+  font-size: 30rpx;
+}
+.itemwrap{
+  align-self: stretch;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.plusminus{
+  align-self:flex-end;
+}
+.notewrap{
+  margin-top: 20rpx;
+  border-top:1rpx solid #8BC34A;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  padding:10rpx;
+}
+.note{
+  background-color: rgba(192,192,192,0.5);
+  width:100%;
+  padding:10rpx;
+  box-sizing: border-box;
 }

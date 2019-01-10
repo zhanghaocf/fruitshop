@@ -2,12 +2,28 @@
 <view class='flexwrap foot'>
   <view class='flexwrap'>
     <view class='flexwrap aligncenter pl20 mr20' bindtap='ceshi'>
-      <view class='quan mr20'>
-        <icon hidden='{{!on}}' class='dblock' type='success' size="20" color="#8BC34A"></icon>
-      </view>
+      <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{!on?'success':'none'}}" size="20" color="#8BC34A"></icon>
       全选
     </view>
     <view>合计：￥<text>0</text></view>
   </view>
   <view class='orderbtn' hover-class='hoverclass' hover-stay-time='100'>生成订单</view>
+</view>
+<view class='carlist flexwrap aligncenter'>
+  <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{!on?'success':'none'}}" size="20" color="#8BC34A"></icon>
+  <image class='carlistimg' src='/images/yingtao.jpg' mode="aspectFill"></image>
+  <view class='itemwrap flexwrap oneline'>
+    <view class='iteminfo oneline'>樱桃</view>
+    <view class='iteminfo oneline'>￥520</view>
+  </view>
+  <plusMinus class="plusminus"
+           myCount="{{count}}"
+           operaType="operaCount"
+           bindoperation="operafn">
+  </plusMinus>
+</view>
+<view class='notewrap'>
+  备注：
+  <textarea class='note' placeholder='有其他需求的比如邮递等请写好备注联系方式住址等'>
+  </textarea>
 </view>

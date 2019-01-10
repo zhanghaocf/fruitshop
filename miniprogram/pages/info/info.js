@@ -1,20 +1,41 @@
 // pages/info/info.js
+import ordertemp from '../../templates/prebuy/order.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title:'2019-01-02的预购单',
+    orderlist:[
+      {
+        id:1,
+        pic:'/images/yingtao.jpg',
+        name:'樱桃',
+        money:100,
+        count:5
+      },
+      {
+        id: 2,
+        pic: '/images/watermelon.jpg',
+        name: '西瓜',
+        money: 250,
+        count: 2
+      }
+    ],
+    totalprice:1000,
+    note:'我的电话180******43、住址为**省**县，请邮递过来谢谢',
+    type:'now'
   },
-
+  finishTab(){
+    ordertemp.finishTab.call(this);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    on:true
+    on:true,
+    count:0
   },
 
   /**
@@ -18,6 +19,26 @@ Page({
     let on=this.data.on;
     this.setData({
       on:!on
+    })
+  },
+  operafn(e) {
+    const type = e.detail.opreation;
+    let count = this.data.count;
+    switch (type) {
+      case 'plus':
+        count++;
+        break;
+      case 'minus':
+        count--;
+        count=count<=0?0:count;
+        break;
+      case 'change':
+        count = e.detail.count;
+        break;
+      default: break;
+    }
+    this.setData({
+      count: count
     })
   },
   /**

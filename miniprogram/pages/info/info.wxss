@@ -1,1 +1,1 @@
-/* pages/info/info.wxss */
+@import '../../templates/prebuy/order.wxss';

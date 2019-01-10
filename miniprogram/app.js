@@ -11,5 +11,14 @@ App({
     }
 
     this.globalData = {}
+  },
+  showToast(message,callback){
+    wx.showToast({
+      title: message,
+      icon:'none',
+      success(){
+        callback();
+      }
+    })
   }
 })

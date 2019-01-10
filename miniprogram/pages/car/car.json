@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "plusMinus": "/components/plusMinus/plusMinus"
+  }
+}

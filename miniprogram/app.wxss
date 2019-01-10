@@ -9,8 +9,20 @@
   display: flex;
   display: -webkit-flex;
 }
-.shenglve{
+.twoline{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2; 
+  word-break: break-all;
+}
+.oneline{
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+}
+.hoverclass{
+  background-color: rgba(139,195,74,0.5);
+  color:white;
 }
