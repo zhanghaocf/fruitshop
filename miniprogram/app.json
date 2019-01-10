@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/car/car",
+    "pages/index/index",
+    "pages/me/me",
+    "pages/info/info"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8BC34A",
+    "navigationBarTitleText": "水果预定",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar":{
+    "color":"#cccccc",
+    "selectedColor":"#8BC34A",
+    "backgroundColor":"#ffffff",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",
+        "iconPath":"/images/shop.png",
+        "selectedIconPath":"/images/s_shop.png"
+      },
+      {
+        "pagePath": "pages/car/car",
+        "text": "购物车",
+        "iconPath": "/images/car.png",
+        "selectedIconPath": "/images/s_car.png"
+      },
+      {
+        "pagePath": "pages/info/info",
+        "text": "新订单",
+        "iconPath": "/images/order.png",
+        "selectedIconPath": "/images/s_order.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "/images/me.png",
+        "selectedIconPath": "/images/s_me.png"
+      }
+    ]
+  }
+}

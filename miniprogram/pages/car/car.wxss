@@ -1,0 +1,48 @@
+/* pages/car/car.wxss */
+.foot{
+  position:fixed;
+  bottom:-1rpx;
+  width:100%;
+  height:100rpx;
+  line-height: 100rpx;
+  border:1rpx solid #8BC34A;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+}
+.orderbtn{
+  padding:0 30rpx;
+  height:100%;
+  background-color: #8BC34A;
+  color:white;
+}
+.hoverclass{
+  background-color: rgba(139,195,74,0.5);
+}
+.quan{
+  width:20px;
+  height:20px;
+  border-radius: 50%;
+  border:1px solid #8BC34A;
+  box-sizing: border-box;
+  position:relative;
+  font-size: 0;
+  vertical-align: middle;
+}
+.aligncenter{
+  align-items: center;
+}
+.pl20{
+  padding-left: 20rpx;
+}
+.mr20{
+  margin-right: 20rpx;
+}
+.dblock{
+  height:20px;
+  display: block;
+  position:absolute;
+  top:0;
+  left:0;
+}

@@ -1,0 +1,24 @@
+<!--pages/index/index.wxml-->
+<view class='iptwrap'>
+  <icon class='iconsearch' type="search" size="20" />
+  <input class='searchipt' placeholder="输入水果名称" confirm-type="search" />
+</view>
+<view class='itemwrap flexwrap'>
+  <view class='itemlist'>
+    <view class='entercar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
+    <image class='fruitimg' src='/images/yingtao.jpg' mode='aspectFill'></image>
+    <view class='flexwrap info'>
+      <view class='shenglve nosamll'>樱桃</view>
+      <view class='money nosamll'>￥100</view>
+    </view>
+  </view>
+  <view class='itemlist'>
+    <view class='entercar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
+    <image class='fruitimg' src='/images/watermelon.jpg' mode='aspectFill'></image>
+    <view class='flexwrap info'>
+      <view class='shenglve nosamll'>西瓜</view>
+      <view class='money nosamll'>￥100</view>
+    </view>
+  </view>
+</view>
+
