@@ -1,0 +1,33 @@
+/* pages/history/list/list.wxss */
+page{
+  padding:20rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+}
+.historylist{
+  border:1rpx solid #ccc;
+  box-sizing: border-box;
+  padding:10rpx;
+  border-radius: 15rpx;
+  position:relative;
+  margin-bottom: 15rpx;
+}
+.finish{
+  position:absolute;
+  right:10rpx;
+  top:10rpx;
+  width:150rpx;
+  height:150rpx;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+.info{
+  width:80%;
+  margin:15rpx 0;
+}
+.detail{
+  justify-content: space-between;
+  height:80rpx;
+  align-items: center;
+  border-top:1rpx solid #ccc;
+}

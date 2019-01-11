@@ -1,0 +1,4 @@
+<!--pages/phone/phone.wxml-->
+<view class='info'>为了让商家准确的联系到您，请输入您的手机号码</view>
+<input maxlength='11' bindinput='setphone' disabled="{{isModify}}" value="{{phone}}" class='ipt' type="number" placeholder="请输入手机号码"></input>
+<view bindtap='surefn' class='btn' hover-stay-time='50' hover-class='hoverclass'>{{!isModify?'确定':'修改'}}</view>

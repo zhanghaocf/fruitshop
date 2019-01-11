@@ -40,3 +40,9 @@ page{
   color:#ccc;
   flex-shrink: 0;
 }
+.hoverclass{
+  background-color: rgba(139,195,74,1);
+}
+.hoverclass .rightTri::after{
+  background-color: rgba(139,195,74,1);
+}

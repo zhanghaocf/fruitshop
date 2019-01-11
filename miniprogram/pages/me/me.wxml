@@ -7,5 +7,19 @@
 <view class='flexwrap oplist firstline' hover-class='hoverclass' hover-start-time='50'>
   <view class='left'>历史订单</view>
   <view class='middle'>查看</view>
-  <view class='right'></view>
+  <view class='rightTri'></view>
+</view>
+<view class='flexwrap oplist' hover-class='hoverclass' hover-start-time='50'>
+  <view class='left'>积分查阅</view>
+  <view class='middle'>查看</view>
+  <view class='rightTri'></view>
+</view>
+<view class='flexwrap oplist' hover-class='hoverclass' hover-start-time='50'>
+  <view class='left'>我的手机号码</view>
+  <view class='middle'>查看</view>
+  <view class='rightTri'></view>
+</view>
+<view class='flexwrap oplist' hover-class='hoverclass' hover-start-time='50'>
+  <view class='left'>联系商家</view>
+  <view class='rightTri'></view>
 </view>

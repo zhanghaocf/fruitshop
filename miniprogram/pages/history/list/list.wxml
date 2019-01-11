@@ -1,0 +1,19 @@
+<!--pages/history/list/list.wxml-->
+<view class='historylist'>
+  <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
+  <view>2019-01-11</view>
+  <view class='info twoline'>共预购了10样商品,预算￥1200</view>
+  <view class='flexwrap detail'>
+    查看详情
+    <view class='rightTri'></view>
+  </view>
+</view>
+<view class='historylist'>
+  <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
+  <view>2019-01-11</view>
+  <view class='info twoline'>共预购了10样商品,预算￥1200</view>
+  <view class='flexwrap detail'>
+    查看详情
+    <view class='rightTri'></view>
+  </view>
+</view>

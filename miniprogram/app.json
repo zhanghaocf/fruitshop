@@ -1,9 +1,12 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/phone/phone",
+    "pages/history/detail/detail",
+    "pages/history/list/list",
     "pages/me/me",
     "pages/info/info",
-    "pages/car/car",
-    "pages/index/index"
+    "pages/car/car"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

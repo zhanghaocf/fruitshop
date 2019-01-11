@@ -1,0 +1,2 @@
+/* pages/history/detail/detail.wxss */
+@import "../../../templates/prebuy/order.wxss"

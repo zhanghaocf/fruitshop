@@ -1,44 +1,40 @@
-const app = getApp();
-// pages/index/index.js
+import ordertemp from '../../../templates/prebuy/order.js'
+// pages/history/detail/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title: '2019-01-02的预购单',
+    orderlist: [
+      {
+        id: 1,
+        pic: '/images/yingtao.jpg',
+        name: '樱桃',
+        money: 100,
+        count: 5
+      },
+      {
+        id: 2,
+        pic: '/images/watermelon.jpg',
+        name: '西瓜',
+        money: 250,
+        count: 2
+      }
+    ],
+    totalprice: 1000,
+    note: '我的电话180******43、住址为**省**县，请邮递过来谢谢',
+    type: 'now'
   },
-
+  finishTab() {
+    ordertemp.finishTab.call(this);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+
   },
 
   /**

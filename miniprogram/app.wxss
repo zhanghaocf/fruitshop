@@ -5,10 +5,12 @@
   align-items: center;
   box-sizing: border-box;
 } 
+/* ***********flex布局********************* */
 .flexwrap{
   display: flex;
   display: -webkit-flex;
 }
+/* ***********两行省略********************* */
 .twoline{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -17,12 +19,30 @@
   -webkit-line-clamp:2; 
   word-break: break-all;
 }
+/* ***********一行省略********************* */
 .oneline{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/* ***********点击效果********************* */
 .hoverclass{
   background-color: rgba(139,195,74,0.5);
   color:white;
+}
+/* *************右尖角*********************** */
+.rightTri{
+  width:25rpx;
+  height:25rpx;
+  background-color: #ccc;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg)
+}
+.rightTri::after{
+  display: block;
+  content:'';
+  width:100%;
+  height:100%;
+  background-color: white;
+  margin:2rpx 0 0 -2rpx;
 }

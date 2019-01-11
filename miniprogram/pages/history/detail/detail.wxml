@@ -1,0 +1,3 @@
+<!--pages/history/detail/detail.wxml-->
+<import src="../../../templates/prebuy/order.wxml" />
+<template is="prebuy" data="{{title,orderlist,totalprice,note,type}}"></template>

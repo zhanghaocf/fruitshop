@@ -1,46 +1,56 @@
-const app = getApp();
-// pages/index/index.js
+const app=getApp();
+// pages/phone/phone.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    phone:'',
+    isModify:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
+
+  },
+  setphone(e){
+    this.setData({
+      phone:e.detail.value
+    })
+  },
+  surefn(){
+    const obj=this.data;
+    const phone = obj.phone;
+    const isModify = obj.isModify;
+    if(isModify){
+      //编辑
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        isModify:false
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+    }else{
+      //确定
+      const msg = this.phonereg(phone);//验证手机号
+      if(!msg){
+        //优秀没毛病
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          isModify: true
         })
+        return;
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+      app.showToast(msg);
     }
   },
-
+  //验证手机号可用性
+  phonereg(phone){
+    const reg=/^\d{11}$/;
+    if(!reg.test(phone)){
+      return '请输入正确的手机号码'
+    }
+    return '';
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
