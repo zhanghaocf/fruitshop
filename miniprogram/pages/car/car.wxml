@@ -1,29 +1,48 @@
 <!--pages/car/car.wxml-->
-<view class='flexwrap foot'>
-  <view class='flexwrap'>
-    <view class='flexwrap aligncenter pl20 mr20' bindtap='ceshi'>
-      <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{!on?'success':'none'}}" size="20" color="#8BC34A"></icon>
-      全选
+<import src="../../templates/noInfo/noInfo.wxml" />
+<block wx:if="{{list.length>0}}">
+  <view class='flexwrap foot'>
+    <view class='flexwrap'>
+      <view class='flexwrap aligncenter pl20 mr20' bindtap='allselect'>
+        <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{allOn?'success':'none'}}" size="20" color="#8BC34A"></icon>
+        全选
+      </view>
+      <view>合计：￥<text>{{totalprice}}</text></view>
     </view>
-    <view>合计：￥<text>0</text></view>
+    <view class='orderbtn' bindtap='createmenu' hover-class='hoverclass' hover-stay-time='100'>生成订单</view>
   </view>
-  <view class='orderbtn' hover-class='hoverclass' hover-stay-time='100'>生成订单</view>
-</view>
-<view class='carlist flexwrap aligncenter'>
-  <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{!on?'success':'none'}}" size="20" color="#8BC34A"></icon>
-  <image class='carlistimg' src='/images/yingtao.jpg' mode="aspectFill"></image>
-  <view class='itemwrap flexwrap oneline'>
-    <view class='iteminfo oneline'>樱桃</view>
-    <view class='iteminfo oneline'>￥520</view>
+  <block wx:for="{{list}}" wx:key="id">
+    <skipOpera index="{{index}}"
+              selectIndex="{{selectIndex}}"
+              bindindependenceFn="indepen"
+              skipHeight="{{skipHeight}}"
+              needShare="{{false}}"
+              binddeleteFn="delopera"
+              >
+        <view class='carlist flexwrap aligncenter' data-index="{{index}}" bindtap="selectone">
+          <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{item.on?'success':'none'}}" size="20" color="#8BC34A"></icon>
+          <image class='carlistimg' src='{{item.pic}}' mode="aspectFill"></image>
+          <view class='itemwrap flexwrap oneline'>
+            <view class='iteminfo oneline'>{{item.name}}</view>
+            <view class='iteminfo oneline'>￥{{item.price}}</view>
+          </view>
+          <plusMinus class="plusminus"
+                  myCount="{{item.count}}"
+                  data-index="{{index}}"
+                  operaType="operaCount"
+                  bindoperation="operafn">
+          </plusMinus>
+        </view>
+      </skipOpera>
+    </block>
+  <view class='notewrap'>
+    备注：
+    <textarea class='note' placeholder='有其他需求的比如邮递等请写好备注联系方式住址等'>
+    </textarea>
   </view>
-  <plusMinus class="plusminus"
-           myCount="{{count}}"
-           operaType="operaCount"
-           bindoperation="operafn">
-  </plusMinus>
-</view>
-<view class='notewrap'>
-  备注：
-  <textarea class='note' placeholder='有其他需求的比如邮递等请写好备注联系方式住址等'>
-  </textarea>
-</view>
+</block>
+<block wx:if="{{list.length==0}}">
+  <view class='juzhong'>
+    <template is="noInfo" data="{{message:'主人可以去选择商品充实一下购物车啦'}}"></template>
+  </view>
+</block>

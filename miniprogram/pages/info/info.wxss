@@ -1,1 +1,2 @@
 @import '../../templates/prebuy/order.wxss';
+@import '../../templates/noInfo/noInfo.wxss';

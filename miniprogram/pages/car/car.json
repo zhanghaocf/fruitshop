@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "购物车",
   "usingComponents": {
-    "plusMinus": "/components/plusMinus/plusMinus"
+    "plusMinus": "/components/plusMinus/plusMinus",
+    "skipOpera":"/components/skipOpration/skipOpration"
   }
 }

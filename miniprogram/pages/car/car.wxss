@@ -1,4 +1,5 @@
 /* pages/car/car.wxss */
+@import '../../templates/noInfo/noInfo.wxss';
 .foot{
   position:fixed;
   bottom:-1rpx;
@@ -46,12 +47,10 @@
   box-sizing: border-box;
   padding:20rpx;
   border:1rpx solid #8BC34A;
-  border-radius: 10rpx;
-  margin:20rpx 10rpx 0;
 }
 .carlistimg{
-  width:250rpx;
-  height:180rpx;
+  width:300rpx;
+  height:230rpx;
   display: block;
   flex-shrink: 0;
   margin-right: 10rpx;

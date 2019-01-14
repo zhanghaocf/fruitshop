@@ -46,3 +46,11 @@
   background-color: white;
   margin:2rpx 0 0 -2rpx;
 }
+/* **************没有数据展示的居中样式********************** */
+.juzhong{
+  width:100%;
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}

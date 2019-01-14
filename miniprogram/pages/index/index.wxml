@@ -4,21 +4,15 @@
   <input class='searchipt' placeholder="输入水果名称" confirm-type="search" />
 </view>
 <view class='itemwrap flexwrap'>
-  <view class='itemlist'>
-    <view class='entercar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
-    <image class='fruitimg' src='/images/yingtao.jpg' mode='aspectFill'></image>
-    <view class='flexwrap info'>
-      <view class='shenglve nosamll'>樱桃</view>
-      <view class='money nosamll'>￥100</view>
+  <block wx:for="{{fruitList}}" wx:key="id">
+    <view class='itemlist'>
+      <view class='entercar' data-id="{{item.id}}" bindtap='enterCar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
+      <image class='fruitimg' src='{{item.pic}}' mode='aspectFill'></image>
+      <view class='flexwrap info'>
+        <view class='shenglve nosamll'>{{item.name}}</view>
+        <view class='money nosamll'>￥{{item.price}}</view>
+      </view>
     </view>
-  </view>
-  <view class='itemlist'>
-    <view class='entercar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
-    <image class='fruitimg' src='/images/watermelon.jpg' mode='aspectFill'></image>
-    <view class='flexwrap info'>
-      <view class='shenglve nosamll'>西瓜</view>
-      <view class='money nosamll'>￥100</view>
-    </view>
-  </view>
+  </block>
 </view>
 

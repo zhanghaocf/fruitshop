@@ -1,3 +1,4 @@
+const app=getApp();
 // pages/info/info.js
 import ordertemp from '../../templates/prebuy/order.js'
 Page({
@@ -28,6 +29,9 @@ Page({
     type:'now'
   },
   finishTab(){
+    if (!app.handleNeedLogin()) {
+      return false;
+    }
     ordertemp.finishTab.call(this);
   },
   /**

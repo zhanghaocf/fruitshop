@@ -54,6 +54,9 @@ Component({
       var oldCount = this.data.myCount;
       var count=event.detail.value;
       var reg = /^(0|[1-9]\d*)$/;
+      if(oldCount==count){
+        return;
+      }
       if(!reg.test(count)){
         wx.showToast({
           title: '请输入正整数',
@@ -72,6 +75,9 @@ Component({
 
       } // 触发事件的选项
       this.triggerEvent('operation', myEventDetail, myEventOption)
+    },
+    returnfalse() {
+      return false
     }
   },
   externalClasses:[

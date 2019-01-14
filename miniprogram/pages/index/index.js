@@ -6,7 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    fruitList:[
+      {
+        id:1,
+        pic:'/images/yingtao.jpg',
+        name:'樱桃',
+        price:100
+      },
+      {
+        id: 2,
+        pic: '/images/watermelon.jpg',
+        name: '西瓜',
+        price: 100
+      }
+    ]
   },
 
   /**
@@ -16,31 +29,21 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
       })
-    } else if (this.data.canIUse) {
+    } else{
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
     }
   },
-
+  enterCar(e){
+    if(!app.handleNeedLogin())return;
+    console.log(e);
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

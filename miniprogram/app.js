@@ -31,7 +31,8 @@ App({
       })
     }
     this.globalData = {
-      userInfo:null
+      userInfo:null,
+      singleclick:false
     }
     
   },
@@ -50,7 +51,7 @@ App({
       title: message,
       icon:'none',
       success(){
-        callback();
+        setTimeout(callback,1000);
       }
     })
   },
@@ -72,4 +73,20 @@ App({
     });
     this.showToast(message);
   },
+  //判断是否需要去登录
+  handleNeedLogin(){
+    if (!this.globalData.userInfo && !this.globalData.singleclick){
+      this.globalData.singleclick=true;
+      this.showToast('请先去登录',()=>{
+        wx.switchTab({
+          url: '/pages/me/me',
+        });
+        this.globalData.singleclick=false;
+      })
+      return false;
+    } else if (!this.globalData.userInfo && this.globalData.singleclick){
+      return false;
+    }
+    return true;
+  }
 })
