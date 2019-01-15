@@ -44,12 +44,13 @@ App({
   getUserInfo(){
     return apiPromise.getUserInfo();
   },
-  showToast(message,callback){
+  showToast(message,callback,type){
     callback = !callback?()=>{}:callback;
+    type=!type?'none':type;
     message=typeof message==='string'?message:JSON.stringify(message);
     wx.showToast({
       title: message,
-      icon:'none',
+      icon: type,
       success(){
         setTimeout(callback,1000);
       }

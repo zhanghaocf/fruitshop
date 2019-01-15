@@ -1,19 +1,20 @@
 <!--pages/history/list/list.wxml-->
-<view class='historylist'>
-  <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
-  <view>2019-01-11</view>
-  <view class='info twoline'>共预购了10样商品,预算￥1200</view>
-  <view class='flexwrap detail'>
-    查看详情
-    <view class='rightTri'></view>
+<import src='../../../templates/noInfo/noInfo.wxml' />
+<block wx:if="{{historyList.length>0}}">
+  <block wx:for="{{historyList}}" wx:key="id">
+    <view class='historylist'>
+      <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
+      <view>{{item.addtime}}</view>
+      <view class='info twoline'>共预购了{{item.itemcount}}样商品,预算￥{{item.totalprice}}</view>
+      <view class='flexwrap detail' bindtap='enderdetail' data-id="{{item.id}}">
+        查看详情
+        <view class='rightTri'></view>
+      </view>
+    </view>
+  </block>
+</block>
+<block wx:if="{{historyList.length==0}}">
+  <view class='juzhong'>
+    <template is="noInfo" data="{{message:'主人还没有历史订单哦'}}"></template>
   </view>
-</view>
-<view class='historylist'>
-  <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
-  <view>2019-01-11</view>
-  <view class='info twoline'>共预购了10样商品,预算￥1200</view>
-  <view class='flexwrap detail'>
-    查看详情
-    <view class='rightTri'></view>
-  </view>
-</view>
+</block>

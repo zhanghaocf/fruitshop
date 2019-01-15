@@ -1,7 +1,7 @@
 <!--pages/index/index.wxml-->
 <view class='iptwrap'>
-  <icon class='iconsearch' type="search" size="20" />
-  <input class='searchipt' placeholder="输入水果名称" confirm-type="search" />
+  <input class='searchipt' bindinput='handleipt' bindconfirm='searchFn' placeholder="输入水果名称" confirm-type="search" />
+  <icon class='iconsearch' bindtap='searchFn' type="search" size="20" />
 </view>
 <view class='itemwrap flexwrap'>
   <block wx:for="{{fruitList}}" wx:key="id">

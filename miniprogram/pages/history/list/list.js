@@ -5,9 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    historyList:[
+      {
+        id:1,
+        addtime:'2019-01-11',
+        itemcount:10,
+        totalprice:1200
+      },
+      {
+        id: 2,
+        addtime: '2019-01-12',
+        itemcount: 8,
+        totalprice: 1000
+      }
+    ]
   },
-
+  enderdetail(e){
+    const id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/history/detail/detail?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

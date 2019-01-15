@@ -51,6 +51,7 @@
   width:100%;
   position:absolute;
   top:50%;
+  left:0;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
 }

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchVal:'',
     fruitList:[
       {
         id:1,
@@ -39,6 +40,15 @@ Page({
         })
       }
     }
+  },
+  searchFn(e){
+    let val = e.detail.value;
+    val = !!val ? val : this.data.searchVal;
+    //模糊查询
+  },
+  handleipt(e){
+    const val = e.detail.value;
+    this.data.searchVal = val;
   },
   enterCar(e){
     if(!app.handleNeedLogin())return;
