@@ -8,7 +8,7 @@
 .iptwrap{
   width:80%;
   background-color: rgba(139,195,74,0.5);
-  margin:20rpx auto;
+  margin:0 auto;
   border-radius: 40rpx;
   position:relative;
 }

@@ -69,6 +69,7 @@ App({
   },
   //处理fail的统一方法
   handleError(message, page) {
+    message=typeof message==='string'?message:'数据出错';
     page.setData({
       isLoading: false
     });
@@ -89,5 +90,20 @@ App({
       return false;
     }
     return true;
+  },
+  //统一与后端交互的接口
+  commoncallFunction(behindType,data,page=null){
+    if(!!page){
+      page.setData({
+        isLoading: true
+      });
+    }
+    return wx.cloud.callFunction({
+        name:'allcan',
+        data:{
+          behindType,
+          ...data
+        }
+    })
   }
 })

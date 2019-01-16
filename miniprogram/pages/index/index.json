@@ -1,1 +1,6 @@
-{}
+{
+  "usingComponents":{
+    "zhLoading": "/components/component-zxLoading/component-zxLoading",
+    "upPullData": "/components/upPullData/upPullData"
+  }
+}

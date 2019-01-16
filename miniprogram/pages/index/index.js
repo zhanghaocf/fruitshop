@@ -6,21 +6,51 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLoading:false,
     searchVal:'',
+    oldSearchVal:'',
     fruitList:[
       {
-        id:1,
+        _id:1,
         pic:'/images/yingtao.jpg',
         name:'樱桃',
-        price:100
+        money:100
       },
       {
-        id: 2,
+        _id: 2,
         pic: '/images/watermelon.jpg',
         name: '西瓜',
-        price: 100
+        money: 100
+      },
+      {
+        _id: 1,
+        pic: '/images/yingtao.jpg',
+        name: '樱桃',
+        money: 100
+      },
+      {
+        _id: 2,
+        pic: '/images/watermelon.jpg',
+        name: '西瓜',
+        money: 100
+      },
+      {
+        _id: 1,
+        pic: '/images/yingtao.jpg',
+        name: '樱桃',
+        money: 100
+      },
+      {
+        _id: 2,
+        pic: '/images/watermelon.jpg',
+        name: '西瓜',
+        money: 100
       }
-    ]
+    ],
+    searchfruitList:[],
+    scrollViewHeight:0,
+    loadType: 'Loading0',
+    isFinish: false,
   },
 
   /**
@@ -40,15 +70,56 @@ Page({
         })
       }
     }
+    const sysInfo = wx.getSystemInfoSync();
+    this.setData({
+      scrollViewHeight: sysInfo.windowHeight//全屏高度
+    })
+  },
+  getData(){
+    console.log(1);
+    this.setData({
+      isLoading:true
+    })
   },
   searchFn(e){
     let val = e.detail.value;
     val = !!val ? val : this.data.searchVal;
+    let oldSearchVal = this.data.oldSearchVal;
+    if (val === oldSearchVal){
+      return;
+    }
+    const data={
+      kw:val
+    }
     //模糊查询
+    app.commoncallFunction('search', data,this)
+      .then(res=>{
+        console.log(res);
+        if(res.result.data.length===0){
+          this.setData({
+            isLoading:false,
+            oldSearchVal: val
+          },()=>{
+            app.showToast('主人要的东西没有了!!');
+          })
+          return;
+        }
+        this.setData({
+          isLoading:false,
+          searchfruitList: res.result.data,
+          oldSearchVal:val
+        })
+      })
+      .catch((e) => app.handleError(e,this))
   },
   handleipt(e){
     const val = e.detail.value;
     this.data.searchVal = val;
+    if(!val){
+      this.setData({
+        searchfruitList:[]
+      })
+    }
   },
   enterCar(e){
     if(!app.handleNeedLogin())return;
