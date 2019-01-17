@@ -1,39 +1,47 @@
 <!--pages/index/index.wxml-->
-<upPullData scrollViewHeight="{{scrollViewHeight}}"
-            loadingType="{{loadType}}"
-            isFinish="{{isFinish}}"
-            showLoading="{{isLoading}}" 
-            lowerThreshold="{{40}}" 
-            bindgetList="getData">
-  <view class='iptwrap'>
-    <input class='searchipt' bindinput='handleipt' bindconfirm='searchFn' placeholder="输入水果名称" confirm-type="search" />
-    <icon class='iconsearch' bindtap='searchFn' type="search" size="20" />
-  </view>
-  <view class='itemwrap flexwrap'>
-    <block wx:if="{{searchfruitList.length===0}}">
-      <block wx:for="{{fruitList}}" wx:key="_id">
-        <view class='itemlist'>
-          <view class='entercar' data-id="{{item._id}}" bindtap='enterCar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
-          <image class='fruitimg' src='{{item.pic}}' mode='aspectFill'></image>
-          <view class='flexwrap info'>
-            <view class='shenglve nosamll'>{{item.name}}</view>
-            <view class='money nosamll'>￥{{item.money}}</view>
+<import src="../../templates/noInfo/noInfo.wxml" />
+<block wx:if="{{fruitList.length>0}}">
+  <upPullData scrollViewHeight="{{scrollViewHeight}}"
+              loadingType="{{loadType}}"
+              isFinish="{{isFinish}}"
+              showLoading="{{isLoading}}" 
+              lowerThreshold="{{40}}" 
+              bindgetList="getData">
+    <view class='iptwrap'>
+      <input class='searchipt' bindinput='handleipt' bindconfirm='searchFn' placeholder="输入水果名称" confirm-type="search" />
+      <icon class='iconsearch' bindtap='searchFn' type="search" size="20" />
+    </view>
+    <view class='itemwrap flexwrap'>
+      <block wx:if="{{searchfruitList.length===0}}">
+        <block wx:for="{{fruitList}}" wx:key="_id">
+          <view class='itemlist'>
+            <view class='entercar' data-item="{{item}}" bindtap='enterCar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
+            <image class='fruitimg' src='{{item.pic}}' mode='aspectFill'></image>
+            <view class='flexwrap info'>
+              <view class='shenglve nosamll'>{{item.name}}</view>
+              <view class='money nosamll'>￥{{item.money}}</view>
+            </view>
           </view>
-        </view>
+        </block>
       </block>
-    </block>
-    <block wx:else>
-      <block wx:for="{{searchfruitList}}" wx:key="_id">
-        <view class='itemlist'>
-          <view class='entercar' data-id="{{item._id}}" bindtap='enterCar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
-          <image class='fruitimg' src='{{item.pic}}' mode='aspectFill'></image>
-          <view class='flexwrap info'>
-            <view class='shenglve nosamll'>{{item.name}}</view>
-            <view class='money nosamll'>￥{{item.money}}</view>
+      <block wx:else>
+        <block wx:for="{{searchfruitList}}" wx:key="_id">
+          <view class='itemlist'>
+            <view class='entercar' data-id="{{item._id}}" bindtap='enterCar' hover-class='hoverclass' hover-stay-time='100'>加入购物车</view>
+            <image class='fruitimg' src='{{item.pic}}' mode='aspectFill'></image>
+            <view class='flexwrap info'>
+              <view class='shenglve nosamll'>{{item.name}}</view>
+              <view class='money nosamll'>￥{{item.money}}</view>
+            </view>
           </view>
-        </view>
+        </block>
       </block>
-    </block>
+    </view>
+  </upPullData>
+</block>
+<block wx:if="{{fruitList.length===0 && !isLoading}}">
+  <view class='juzhong'>
+    <template is="noInfo" data="{{message:'主人别急可以通知店家上货哦'}}"></template>
   </view>
-  <zhLoading wx:if="{{isLoading}}">快马加鞭中</zhLoading>
-</upPullData>
+</block>
+ <zhLoading wx:if="{{isLoading}}">快马加鞭中</zhLoading>

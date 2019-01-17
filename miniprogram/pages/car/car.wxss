@@ -1,5 +1,8 @@
 /* pages/car/car.wxss */
 @import '../../templates/noInfo/noInfo.wxss';
+page{
+  padding-bottom: 110rpx;
+}
 .foot{
   position:fixed;
   bottom:-1rpx;
@@ -8,13 +11,22 @@
   line-height: 100rpx;
   border:1rpx solid #8BC34A;
   box-sizing: border-box;
-  align-items: center;
   justify-content: space-between;
   font-size: 32rpx;
+  background-color: white;
+  z-index: 10;
+  left:0;
+}
+.width100{
+  width:100%;
+  align-items: center;
 }
 .orderbtn{
-  padding:0 30rpx;
+  width:180rpx;
   height:100%;
+  align-items: center;
+  justify-content: center;
+  line-height: initial;
   background-color: #8BC34A;
   color:white;
 }
@@ -27,8 +39,8 @@
   border-radius: 50%;
   border:1px solid #8BC34A;
   box-sizing: border-box;
-  flex-shrink: 0;
 }
+
 .aligncenter{
   align-items: center;
 }
@@ -69,15 +81,16 @@
   align-self:flex-end;
 }
 .notewrap{
-  margin-top: 20rpx;
-  border-top:1rpx solid #8BC34A;
+  margin-top: 50rpx;
+  border-top:1rpx solid #ccc;
   font-size: 30rpx;
   box-sizing: border-box;
-  padding:10rpx;
+  padding:20rpx;
 }
 .note{
   background-color: rgba(192,192,192,0.5);
   width:100%;
   padding:10rpx;
   box-sizing: border-box;
+  margin-top: 20rpx;
 }

@@ -9,48 +9,13 @@ Page({
     isLoading:false,
     searchVal:'',
     oldSearchVal:'',
-    fruitList:[
-      {
-        _id:1,
-        pic:'/images/yingtao.jpg',
-        name:'樱桃',
-        money:100
-      },
-      {
-        _id: 2,
-        pic: '/images/watermelon.jpg',
-        name: '西瓜',
-        money: 100
-      },
-      {
-        _id: 1,
-        pic: '/images/yingtao.jpg',
-        name: '樱桃',
-        money: 100
-      },
-      {
-        _id: 2,
-        pic: '/images/watermelon.jpg',
-        name: '西瓜',
-        money: 100
-      },
-      {
-        _id: 1,
-        pic: '/images/yingtao.jpg',
-        name: '樱桃',
-        money: 100
-      },
-      {
-        _id: 2,
-        pic: '/images/watermelon.jpg',
-        name: '西瓜',
-        money: 100
-      }
-    ],
+    fruitList:[],
     searchfruitList:[],
     scrollViewHeight:0,
     loadType: 'Loading0',
     isFinish: false,
+    pageIndex:0,
+    pageCount:1
   },
 
   /**
@@ -74,12 +39,15 @@ Page({
     this.setData({
       scrollViewHeight: sysInfo.windowHeight//全屏高度
     })
+    //获取水果列表
+    this.getFruits();
   },
   getData(){
-    console.log(1);
-    this.setData({
-      isLoading:true
-    })
+    const searchfruitList = this.data.searchfruitList;
+    if (searchfruitList.length>0){//搜索显示的物体不需要上拉获取数据功能
+      return;
+    }
+    this.getFruits();
   },
   searchFn(e){
     let val = e.detail.value;
@@ -112,6 +80,37 @@ Page({
       })
       .catch((e) => app.handleError(e,this))
   },
+  //首页获取水果信息
+  getFruits(){
+    const pd=this.data;
+    let pageIndex = pd.pageIndex;
+    const pageCount = pd.pageCount;
+    let fruitList = pd.fruitList;
+    if (pageIndex+1 > pageCount){
+      this.setData({
+        isFinish:true
+      })
+      return;
+    }
+    const data={
+      pageIndex
+    }
+    //console.log(pageIndex);
+    app.commoncallFunction('fruit', data,this)
+      .then(res=>{
+        const {result:{fruitres:{data},pageCount}}=res;
+        pageIndex++;
+        fruitList=fruitList.concat(data);
+       // console.log(data, pageCount)
+        this.setData({
+          isLoading:false,
+          fruitList,
+          pageCount,
+          pageIndex
+        })
+      })
+      .catch(err=>app.handleError(e,this))
+  },
   handleipt(e){
     const val = e.detail.value;
     this.data.searchVal = val;
@@ -123,7 +122,14 @@ Page({
   },
   enterCar(e){
     if(!app.handleNeedLogin())return;
-    console.log(e);
+    const item=e.currentTarget.dataset.item;
+    const {_id}=item;
+     let shoppcarData = wx.getStorageSync('shoppcarData')||{};
+     shoppcarData[_id] = shoppcarData[_id]||item;
+     let count = shoppcarData[_id].count||0;
+     shoppcarData[_id].count = ++count;
+     wx.setStorageSync('shoppcarData', shoppcarData);
+     app.showToast('加入成功喽~',null,'success');
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

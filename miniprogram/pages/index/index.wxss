@@ -1,4 +1,5 @@
 /* pages/index/index.wxss */
+@import '../../templates/noInfo/noInfo.wxss';
 .searchipt{
   width:100%;
   height:80rpx;

@@ -10,25 +10,8 @@ Page({
     selectIndex:-1,
     skipHeight:272,
     selectedcount:0,//选中的数量默认为0
-    totalprice:0,
-    list:[
-      {
-        id:1,
-        on:false,
-        pic:'/images/yingtao.jpg',
-        name:'樱桃',
-        price:520,
-        count:1
-      },
-      {
-        id:2,
-        on:false,
-        pic:'/images/watermelon.jpg',
-        name:'西瓜',
-        price:200,
-        count:3
-      }
-    ]
+    totalprice:111111111111111111111111111110,
+    list:[]
   },
 
   /**
@@ -101,15 +84,15 @@ Page({
     let wayobj={
       'all':function(){
         totalprice = allBol ? list.reduce((sum,item)=>{
-          return sum+=item.price*item.count;
+          return sum+=item.money*item.count;
         }, 0):0;
       },
       'one':function(){
-        totalprice = obj.on ? totalprice + obj.price * obj.count : totalprice - obj.price * obj.count;
+        totalprice = obj.on ? totalprice + obj.money * obj.count : totalprice - obj.money * obj.count;
       },
       'opera':function(){
         totalprice = obj.on ?list.reduce((sum, item) => {
-          var data = item.on ? item.price * item.count:0;
+          var data = item.on ? item.money * item.count:0;
           return sum += data;
         }, 0) : totalprice;
       }
@@ -128,14 +111,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.updatecardata()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      selectIndex:-1
+    })
   },
 
   /**
@@ -193,5 +178,21 @@ Page({
     }
     let list=this.data.list;
     console.log(list)
+  },
+  //处理对象变为数组
+  objtoarr(obj){
+    let arr=[];
+    for(var item in obj){
+      arr.push(obj[item]);
+    }
+    return arr;
+  },
+  //每次从storage中获取数据更新视图
+  updatecardata(){
+    const data = wx.getStorageSync('shoppcarData')||{};
+    const datalist = !!Object.values ? Object.values(data) : this.objtoarr(data);
+    this.setData({
+      list: datalist
+    })
   }
 })
