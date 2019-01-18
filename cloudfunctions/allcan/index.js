@@ -12,15 +12,32 @@ exports.main = async (event, context) => {
     const frultCollection = db.collection('frult')
     switch (behindType){
       case 'search':
-        let { kw } = event;
+        let { kw } = event
         console.log(`关键字为${kw}`)
-        const res = await frultCollection.where({
+        let res = await frultCollection.where({
           name: db.RegExp({
             regexp: `${kw}`,
             options: 'i'
           })
         }).get()
         return res
+      break;
+      //获取首页水果列表
+      case 'fruit':
+        let {pageIndex} = event
+        let limitCount=5
+        const {total} = await frultCollection.count()
+        let pageCount = Math.ceil(total / limitCount)
+        let fruitres=null
+        let skipnumber = pageIndex * limitCount
+        if(total>0){
+          fruitres = await frultCollection.orderBy('addtime', 'desc').skip(skipnumber).limit(limitCount).get()
+        }
+        return {
+          total,
+          pageCount,
+          fruitres
+        }
       break;
       default:
         return {
