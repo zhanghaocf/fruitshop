@@ -15,7 +15,8 @@ Page({
     loadType: 'Loading0',
     isFinish: false,
     pageIndex:0,
-    pageCount:1
+    pageCount:1,
+    searchBol:true//用来解决上拉底部loading和中间loading在搜索框中搜索物品不同时出现
   },
 
   /**
@@ -53,12 +54,18 @@ Page({
     let val = e.detail.value;
     val = !!val ? val : this.data.searchVal;
     let oldSearchVal = this.data.oldSearchVal;
+    if(!val){
+      return;
+    }
     if (val === oldSearchVal){
       return;
     }
     const data={
       kw:val
     }
+    this.setData({
+      searchBol:false
+    })
     //模糊查询
     app.commoncallFunction('search', data,this)
       .then(res=>{
@@ -66,7 +73,8 @@ Page({
         if(res.result.data.length===0){
           this.setData({
             isLoading:false,
-            oldSearchVal: val
+            oldSearchVal: val,
+            searchBol: true
           },()=>{
             app.showToast('主人要的东西没有了!!');
           })
@@ -75,10 +83,16 @@ Page({
         this.setData({
           isLoading:false,
           searchfruitList: res.result.data,
-          oldSearchVal:val
+          oldSearchVal:val,
+          searchBol: true
         })
       })
-      .catch((e) => app.handleError(e,this))
+      .catch((e) => {
+        app.handleError(e,this)
+        this.setData({
+          searchBol: true
+        })  
+      })
   },
   //首页获取水果信息
   getFruits(){
@@ -95,7 +109,6 @@ Page({
     const data={
       pageIndex
     }
-    //console.log(pageIndex);
     app.commoncallFunction('fruit', data,this)
       .then(res=>{
         const {result:{fruitres:{data},pageCount}}=res;
@@ -109,7 +122,7 @@ Page({
           pageIndex
         })
       })
-      .catch(err=>app.handleError(e,this))
+      .catch(err => app.handleError(err,this))
   },
   handleipt(e){
     const val = e.detail.value;

@@ -4,7 +4,7 @@
   <upPullData scrollViewHeight="{{scrollViewHeight}}"
               loadingType="{{loadType}}"
               isFinish="{{isFinish}}"
-              showLoading="{{isLoading}}" 
+              showLoading="{{isLoading && searchBol}}" 
               lowerThreshold="{{40}}" 
               bindgetList="getData">
     <view class='iptwrap'>

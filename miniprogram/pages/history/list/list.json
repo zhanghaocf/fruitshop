@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText":"历史订单"
+  "navigationBarTitleText":"历史订单",
+  "usingComponents":{
+    "zhLoading":"/components/component-zxLoading/component-zxLoading",
+    "upPullData": "/components/upPullData/upPullData"
+  }
 }

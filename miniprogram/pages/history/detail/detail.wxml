@@ -1,3 +1,6 @@
 <!--pages/history/detail/detail.wxml-->
 <import src="../../../templates/prebuy/order.wxml" />
-<template is="prebuy" data="{{title,orderlist,totalprice,note,type}}"></template>
+<block wx:if="{{orderlist.length>0}}">
+  <template is="prebuy" data="{{orderid,title,orderlist,totalprice,note,type,ordername:'ohistory'}}"></template>
+</block>
+<zhLoading wx:if="{{isLoading}}">快马加鞭中</zhLoading>

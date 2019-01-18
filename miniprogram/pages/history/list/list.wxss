@@ -4,6 +4,7 @@ page{
   padding:20rpx;
   box-sizing: border-box;
   font-size: 30rpx;
+  overflow: hidden;
 }
 .historylist{
   border:1rpx solid #ccc;

@@ -1,6 +1,6 @@
 <template name='prebuy'>
   <view class='title'>{{title}}</view>
-  <block wx:for="{{orderlist}}" wx:key='id'>
+  <block wx:for="{{orderlist}}" wx:key='_id'>
     <view class='orderlist flexwrap'>
       <image class='orederimg' src='{{item.pic}}' mode='aspectFill'></image>
       <view class='orderinfo flexwrap'>
@@ -12,9 +12,9 @@
   </block>
   <view class='total padding20'>预计总额 <text class='totalprice'>￥{{totalprice}}</text></view>
   <view class='note padding20'>
-    备注：{{note}}
+    备注：{{!!note?note:'主人没写备注哦~'}}
   </view>
-  <view wx:if="{{type==='now'}}" class='btn' hover-class='hoverclass' hover-stay-time='100' bindtap='finishTab'>
+  <view wx:if="{{type==='now'}}" data-name="{{ordername}}" data-id="{{orderid}}" class='btn' hover-class='hoverclass' hover-stay-time='100' bindtap='finishTab'>
     我已完成预购单
   </view>
   <image wx:else class='finish' src='/images/finish.png' mode='widthFix'></image>

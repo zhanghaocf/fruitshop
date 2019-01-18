@@ -1,11 +1,12 @@
 <!--pages/info/info.wxml-->
 <import src="../../templates/prebuy/order.wxml" />
 <import src="../../templates/noInfo/noInfo.wxml" />
-<block wx:if="{{orderlist.length===0}}">
+<block wx:if="{{orderlist.length===0 && !isLoading}}">
   <view class='juzhong'>
     <template is="noInfo" data="{{message:'主人还没有新的预购单哦，赶快去生成吧'}}"></template>
   </view>
 </block>
 <block wx:if="{{orderlist.length>0}}">
-  <template is="prebuy" data="{{title,orderlist,totalprice,note,type}}"></template>
+  <template is="prebuy" data="{{orderid,title,orderlist,totalprice,note,type,ordername:'neworder'}}"></template>
 </block>
+<zhLoading wx:if="{{isLoading}}">快马加鞭中</zhLoading>

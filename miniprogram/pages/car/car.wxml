@@ -29,12 +29,17 @@
     </block>
   <view class='notewrap'>
     备注：
-    <textarea class='note' placeholder='有其他需求的比如邮递等请写好备注联系方式住址等'>
+    <textarea bindinput='handletextarea' class='note' value='{{note}}' placeholder='有其他需求的比如邮递等请写好备注联系方式住址等'>
       <cover-view class='flexwrap foot aligncenter'>
-        <cover-view class='bordericon coverviewselect' bindtap='allselect'>
-          <!-- <icon class='dblock mr20 bordericon flexwrap aligncenter' type="{{allOn?'success':'none'}}" size="20" color="#8BC34A"></icon> -->
+        <cover-view class='bordericon' bindtap='allselect'>
+          <cover-image hidden="{{!allOn}}" src='/images/gou.png'></cover-image>
         </cover-view>
-        <cover-view class='orderbtn' bindtap='createmenu' hover-class='hoverclass' hover-stay-time='100'>生成订单</cover-view>
+        <cover-view class='jiesuanwrap flexwrap'>
+          <cover-view bindtap='allselect' class='quanxuan flexwrap aligncenter'>全选</cover-view>
+          <cover-view class='heji flexwrap aligncenter'>合计：</cover-view>
+          <cover-view class='totalprice flexwrap aligncenter oneline'>￥{{totalprice}}</cover-view>
+        </cover-view>
+        <cover-view class='flexwrap orderbtn aligncenter' bindtap='createmenu' hover-class='hoverclass' hover-stay-time='100'>生成订单</cover-view>
       </cover-view>
     </textarea>
   </view>

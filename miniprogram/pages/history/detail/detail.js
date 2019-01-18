@@ -1,4 +1,5 @@
 import ordertemp from '../../../templates/prebuy/order.js'
+const app = getApp()
 // pages/history/detail/detail.js
 Page({
 
@@ -6,37 +7,51 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: '2019-01-02的预购单',
-    orderlist: [
-      {
-        id: 1,
-        pic: '/images/yingtao.jpg',
-        name: '樱桃',
-        money: 100,
-        count: 5
-      },
-      {
-        id: 2,
-        pic: '/images/watermelon.jpg',
-        name: '西瓜',
-        money: 250,
-        count: 2
-      }
-    ],
-    totalprice: 1000,
-    note: '我的电话180******43、住址为**省**县，请邮递过来谢谢',
-    type: 'now'
+    title: '',
+    orderlist: [],
+    totalprice: 0,
+    note: '',
+    type: 'now',
+    orderid: 0,
+    isLoading:false
   },
-  finishTab() {
-    ordertemp.finishTab.call(this);
+  finishTab(e) {
+    ordertemp.finishTab.call(this,e);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const orderid = options.id;
+    this.getDetail(orderid);
   },
-
+  getDetail(orderid){
+    app.commoncallFunction('orderdetail', { orderid },this)
+       .then(res=>{
+         const { result: { data } } = res;
+         if (!data || data.length === 0) {
+           this.setData({
+             orderlist: [],
+             isLoading: false
+           })
+           return;
+         }
+         const { orderlist, addtime, note, totalprice, _id, type } = data[0];
+         const date = new Date(addtime);
+         const title = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}的预购单`;
+         this.setData({
+           orderlist,
+           isLoading: false,
+           note,
+           totalprice,
+           title,
+           orderid: _id,
+           type
+         })
+       }).catch(err=>{
+         app.handleError(err,this);
+       })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

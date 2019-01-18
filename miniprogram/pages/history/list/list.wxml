@@ -1,20 +1,30 @@
 <!--pages/history/list/list.wxml-->
 <import src='../../../templates/noInfo/noInfo.wxml' />
 <block wx:if="{{historyList.length>0}}">
-  <block wx:for="{{historyList}}" wx:key="id">
-    <view class='historylist'>
-      <image class='finish' src='/images/finish.png' mode='aspectFill'></image>
-      <view>{{item.addtime}}</view>
-      <view class='info twoline'>共预购了{{item.itemcount}}样商品,预算￥{{item.totalprice}}</view>
-      <view class='flexwrap detail' bindtap='enderdetail' data-id="{{item.id}}">
-        查看详情
-        <view class='rightTri'></view>
-      </view>
-    </view>
-  </block>
+  <upPullData scrollViewHeight="{{scrollViewHeight}}"
+                loadingType="{{loadType}}"
+                isFinish="{{isFinish}}"
+                showLoading="{{isLoading}}" 
+                lowerThreshold="{{40}}" 
+                bindgetList="getData">
+      <block wx:for="{{historyList}}" wx:key="_id">
+        <view class='historylist'>
+          <image wx:if="{{item.type!=='now'}}" class='finish' src='/images/finish.png' mode='aspectFill'></image>
+          <view>{{item.addtime}}</view>
+          <view class='info twoline'>共预购了{{item.totalcount}}样商品,预算￥{{item.totalprice}}</view>
+          <view class='flexwrap detail' bindtap='enderdetail' data-id="{{item._id}}">
+            查看详情
+            <view class='rightTri'></view>
+          </view>
+        </view>
+      </block>
+  </upPullData>
 </block>
-<block wx:if="{{historyList.length==0}}">
+<block wx:if="{{historyList.length==0 && !isLoading}}">
   <view class='juzhong'>
     <template is="noInfo" data="{{message:'主人还没有历史订单哦'}}"></template>
   </view>
 </block>
+<view hidden="{{!isLoading}}">
+  <zhLoading>快马加鞭中</zhLoading>
+</view>

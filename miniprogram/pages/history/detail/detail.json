@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText":"预购单详情"
+  "navigationBarTitleText":"预购单详情",
+  "usingComponents": {
+    "zhLoading": "/components/component-zxLoading/component-zxLoading"
+  }
 }

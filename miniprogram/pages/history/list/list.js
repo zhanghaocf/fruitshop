@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/history/list/list.js
 Page({
 
@@ -5,20 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    historyList:[
-      {
-        id:1,
-        addtime:'2019-01-11',
-        itemcount:10,
-        totalprice:1200
-      },
-      {
-        id: 2,
-        addtime: '2019-01-12',
-        itemcount: 8,
-        totalprice: 1000
-      }
-    ]
+    isLoading:false,
+    scrollViewHeight:0,
+    loadType:'Loading0',
+    isFinish:false,
+    pageIndex: 0,
+    pageCount: 1,
+    historyList:[]
   },
   enderdetail(e){
     const id = e.currentTarget.dataset.id;
@@ -30,9 +24,54 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const sysInfo = wx.getSystemInfoSync();
+    this.setData({
+      scrollViewHeight: sysInfo.windowHeight//全屏高度
+    })
+    this.getHistory();
+    //中央事件（订阅发布监听模式）
+    app.globalData.event.on('okTask',this.setType,this);
   },
-
+  getData(){
+    this.getHistory();
+  },
+  getHistory(){
+    const pd = this.data;
+    let pageIndex = pd.pageIndex;
+    let pageCount = pd.pageCount;
+    let historyList = pd.historyList;
+    if (pageIndex + 1 > pageCount) {
+      this.setData({
+        isFinish: true
+      })
+      return;
+    }
+    app.commoncallFunction('gethistory',{pageIndex},this)
+       .then(res=>{
+         const {result:{gh_pageCount,ghorders}}=res;
+         historyList=historyList.concat(ghorders.data);
+         pageIndex++;
+         this.setData({
+           isLoading:false,
+           historyList,
+           pageCount: gh_pageCount,
+           pageIndex
+         })
+       }).catch(err=>{
+         app.handleError(err,this);
+       })
+  },
+  setType(id){
+    const historyList = this.data.historyList;
+    historyList.forEach(item=>{
+      let type = item.type;
+      item.type=item._id === id ? 'history' : type;
+    })
+    this.setData({
+      historyList: historyList
+    })
+    console.log('处理了');
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -58,7 +97,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    app.globalData.event.off('okTask', this.setType);
   },
 
   /**
