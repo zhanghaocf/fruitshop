@@ -176,9 +176,9 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  },
+  // },
   indepen(e) {
     this.setData({
       selectIndex: e.detail.selectIndex
