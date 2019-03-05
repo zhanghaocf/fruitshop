@@ -1,0 +1,7 @@
+<!--pages/error/error.wxml-->
+<view class='wrap'>
+  <image class='noimg' src='/images/versionNo.jpg' mode='widthFix'></image>
+  <view>
+    小主当前的微信太老了，快去更新最新版本的微信再来体验我吧~
+  </view>
+</view>

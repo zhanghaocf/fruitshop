@@ -1,0 +1,9 @@
+/* pages/error/error.wxss */
+.wrap{
+  text-align: center;
+  box-sizing: border-box;
+  padding:0 30rpx;
+}
+.noimg{
+  width:100%;
+}

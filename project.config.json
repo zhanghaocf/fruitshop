@@ -10,7 +10,7 @@
 	},
 	"appid": "wx8e2a8f1bb7e0cb56",
 	"projectname": "frultshop",
-	"libVersion": "2.2.5",
+	"libVersion": "2.3.2",
 	"condition": {
 		"search": {
 			"current": -1,

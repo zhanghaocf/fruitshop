@@ -26,6 +26,9 @@ App({
         .catch(err=>console.log(err));
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      wx.redirectTo({
+        url: '/pages/error/error',
+      })
     } else {
       wx.cloud.init({
         traceUser: true,
